@@ -10,10 +10,16 @@ packages = [{include = "app"}]
 python = "^3.9"
 cohere = "^4.0.4"
 pandas = "^1.5.3"
-googletrans = "^3.0.0"
+googletrans = "4.0.0rc1"
 numpy = "^1.24.2"
 huggingface = "^0.0.1"
 streamlit = { version="^1.20.0", python=">=3.9,<3.9.7 || >3.9.7,<4.0" }
+scipy = { version="^1.10.1", python=">=3.9,<3.12" }
+openai = "^0.27.2"
+streamlit-aggrid = "^0.3.4.post3"
+extra-streamlit-components = "^0.1.56"
+scikit-learn = "^1.2.2"
+google-trans-new = "^1.1.9"
 
 
 [build-system]
