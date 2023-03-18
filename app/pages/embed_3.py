@@ -8,8 +8,6 @@ def generateEmbeds(goto_next):
     selected_column = st.session_state.selected_column
     df = st.session_state.df
     
-    st.table(df)
-    
     st.header('Step 4: Generate Embeddings')
     
     data = {}
@@ -26,7 +24,7 @@ def generateEmbeds(goto_next):
               "embeddings": embdgs[index]
           }
     
-      st.json(data)
+    st.header("Select number of clusters")
       
     n_clusters = st.slider('Number of clusters', 1, 10, 5)
   

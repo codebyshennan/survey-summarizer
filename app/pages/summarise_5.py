@@ -8,6 +8,8 @@ from app.helpers.cohere import CohereSDK
 def summariseLabelGroups(goto_next):
   n_clusters = st.session_state.n_clusters
   df_labelled = st.session_state.df_labelled
+  co = CohereSDK()
+  
   label_text_dict = {}
   
   progress_text = "Operation in progress. Please wait."
@@ -27,6 +29,7 @@ def summariseLabelGroups(goto_next):
   dict_length = len(label_text_dict.keys())
   
   summaries = []
+
   
   for i, k in enumerate(label_text_dict):
     
@@ -35,8 +38,6 @@ def summariseLabelGroups(goto_next):
     label = k
     text_string = label_text_dict[k]
     length_of_summary = 'medium'
-    
-    co = CohereSDK()
     
     summary = co.summarize_text(
       text_string,
