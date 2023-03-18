@@ -1,12 +1,9 @@
-import streamlit as st
-import pandas as pd
-import cohere
 import base64
-import csv
 import os
 
-from sklearn.cluster import KMeans
-
+import cohere
+import pandas as pd
+import streamlit as st
 
 COHERE_API_KEY = os.environ.get('COHERE_API_KEY')
 
@@ -124,7 +121,7 @@ def main():
         with st.spinner('Clustering text...'):
 
             # embeddings = get_embeddings(df['answer'].tolist())
-            cohere_embeddings = get_cohere_embeddings(df_data)
+            get_cohere_embeddings(df_data)
 
             labels = run_clustering(embeddings, num_clusters=5)
 
