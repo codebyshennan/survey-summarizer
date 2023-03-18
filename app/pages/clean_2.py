@@ -17,16 +17,17 @@ def cleanText(goto_next):
   st.write('Min Length:', min_length)
   st.write('Selected Column:', selected_column)
   
+  if min_length > 1:
+    with st.spinner('Cleaning text...'):
+      cleaned_df = clean_df(df, selected_column, min_length)
+      st.table(cleaned_df.head())
+      st.write(cleaned_df.shape)
+      
   with st.form("cluster"):
-    temp = ''
-    if min_length > 1:
-      with st.spinner('Cleaning text...'):
-        temp = clean_df(df, selected_column, min_length)
-        st.table(temp.head())
-        st.write(temp.shape)
+    
 
     def nextStep():
-        st.session_state.df = temp
-        goto_next()
-        
+      st.session_state.cleaned_df = cleaned_df
+      goto_next()
+      
     st.form_submit_button(label='Next', on_click=nextStep)

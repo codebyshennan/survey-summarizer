@@ -26,10 +26,10 @@ class CohereSDK():
     clustering = self.client.clustering(embeddings, num_clusters)
     return clustering['assignments']
   
-  def summarize_text(self, text, length):
+  def summarize_text(self, text):
     return self.client.summarize(
       text=text, 
-      length=length, 
+      length='auto', 
       format='paragraph',
       model='summarize-xlarge',
       extractiveness='low',

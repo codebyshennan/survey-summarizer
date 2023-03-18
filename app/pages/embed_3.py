@@ -2,20 +2,19 @@ import streamlit as st
 
 from app.helpers.cohere import CohereSDK
 
-
 def generateEmbeds(goto_next):
     co = CohereSDK()
     selected_column = st.session_state.selected_column
-    df = st.session_state.df
+    cleaned_df = st.session_state.cleaned_df
     
     st.header('Step 4: Generate Embeddings')
     
     data = {}
   
     with st.spinner('Generate embeddings...'):
-      embdgs = co.get_cohere_embeddings(df, selected_column)
+      embdgs = co.get_cohere_embeddings(cleaned_df, selected_column)
       
-      for index, row in df.iterrows():
+      for index, row in cleaned_df.iterrows():
           text = row[selected_column]
           translated = row['translated_sentence']
           data[index] = {

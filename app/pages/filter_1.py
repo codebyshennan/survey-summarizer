@@ -23,7 +23,7 @@ def filterDf(goto_next):
 
         translations.append(translation)
         bar.progress(len(translations) * (100//total))
-        el.text(f"{len(translations) * (100//total)} completed")
+        el.text(f"{len(translations)}/{total} completed")
       
     df['translated_sentence'] = translations
     

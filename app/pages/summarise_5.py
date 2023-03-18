@@ -23,7 +23,7 @@ def summariseLabelGroups(goto_next):
       translated_text = ' '.join(rows['translated'].tolist())
       label_text_dict[label] = translated_text
     
-    st.write(len(label_text_dict))
+    el = st.text(len(label_text_dict))
   
   # length of label_text_dict
   dict_length = len(label_text_dict.keys())
@@ -33,20 +33,17 @@ def summariseLabelGroups(goto_next):
   
   for i, k in enumerate(label_text_dict):
     
-    bar.progress(i * (100 / dict_length), text=progress_text)
-    
     label = k
     text_string = label_text_dict[k]
-    length_of_summary = 'medium'
     
     response = co.summarize_text(
-      text_string,
-      length_of_summary,
+      text_string
     )
     
-    st.write(label, response.summary)
     summaries.append([label, response.summary])
     
+    bar.progress((i+1) * (100 // dict_length), text=progress_text)
+    el.text(f"{len(summaries)}/{dict_length} completed")
     time.sleep(15)
     
   st.table(summaries)

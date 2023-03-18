@@ -14,7 +14,7 @@ def uploadCSV(goto_next):
         
         def nextStep():
             if 'df' not in st.session_state:
-                st.session_state['df'] = df.head(100)
+                st.session_state['df'] = df.head(200)
             goto_next()
 
         with st.form("uploader"):
