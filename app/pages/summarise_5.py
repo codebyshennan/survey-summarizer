@@ -39,13 +39,13 @@ def summariseLabelGroups(goto_next):
     text_string = label_text_dict[k]
     length_of_summary = 'medium'
     
-    summary = co.summarize_text(
+    response = co.summarize_text(
       text_string,
       length_of_summary,
     )
     
-    st.write(label, summary)
-    summaries.append([label, summary])
+    st.write(label, response.summary)
+    summaries.append([label, response.summary])
     
     time.sleep(15)
     
