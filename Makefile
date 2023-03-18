@@ -1,5 +1,8 @@
 # Define required macros here
 SHELL = /bin/sh
 
-appl:
-	source .env && poetry run streamlit run ./app/app.py
+dev:
+	source .env && poetry run streamlit run ./app/main.py
+
+prod:
+	poetry run streamlit run ./app/main.py
