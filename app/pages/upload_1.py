@@ -1,6 +1,7 @@
 import pandas as pd
 import streamlit as st
 
+
 # Step 1: User uploads CSV file
 def uploadCSV(goto_next):
     st.header('Step 1: Upload a CSV file')
@@ -14,7 +15,7 @@ def uploadCSV(goto_next):
         
         def nextStep():
             if 'df' not in st.session_state:
-                st.session_state['df'] = df.head(200)
+                st.session_state['df'] = df.head(500)
             goto_next()
 
         with st.form("uploader"):
@@ -25,4 +26,4 @@ def uploadCSV(goto_next):
         
         
         
-            
+                        

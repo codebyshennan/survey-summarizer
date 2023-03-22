@@ -1,16 +1,17 @@
 import time
 
 import streamlit as st
-
-from app.helpers.cohere import CohereSDK
+from helpers.cohere import co
 
 
 def summariseLabelGroups(goto_next):
   n_clusters = st.session_state.n_clusters
   df_labelled = st.session_state.df_labelled
-  co = CohereSDK()
   
   label_text_dict = {}
+  
+  st.header("Step 6: Summarise label groups")
+  st.write("For each label group, we then run a summariser using Cohere's API to summarise the sentences in that group. This gives us a clearer idea of what each group is about. As we are using a free API, we have to wait 15 seconds between each request, and we can only make 5 API calls per minute.")
   
   progress_text = "Operation in progress. Please wait."
   bar = st.progress(0, text=progress_text)

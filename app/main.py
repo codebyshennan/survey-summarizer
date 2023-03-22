@@ -1,16 +1,16 @@
 
-import streamlit as st
 import sys
 
-
-from app.pages.clean_2 import cleanText
-from app.pages.cluster_4 import gatherClusters
-from app.pages.download_6 import downloadResult
-from app.pages.embed_3 import generateEmbeds
-from app.pages.filter_1 import filterDf
-from app.pages.summarise_5 import summariseLabelGroups
-from app.pages.upload_0 import uploadCSV
-
+import streamlit as st
+from pages.clean_3 import cleanText
+from pages.cluster_5 import gatherClusters
+from pages.conclusion_7 import conclusion
+from pages.download_8 import downloadResult
+from pages.embed_4 import generateEmbeds
+from pages.filter_2 import filterDf
+from pages.foreword_0 import foreword
+from pages.summarise_6 import summariseLabelGroups
+from pages.upload_1 import uploadCSV
 
 print(sys.path)
 
@@ -20,23 +20,22 @@ def go_to_next_page():
 
 def main():
     
-
-    
     if 'page_no' not in st.session_state:
         st.session_state['page_no'] = 0
         
     pages = {
-        0: uploadCSV,
-        1: filterDf,
-        2: cleanText,
-        3: generateEmbeds,
-        4: gatherClusters,
-        5: summariseLabelGroups,
-        6: downloadResult,
+        0: foreword,
+        1: uploadCSV,
+        2: filterDf,
+        3: cleanText,
+        4: generateEmbeds,
+        5: gatherClusters,
+        6: summariseLabelGroups,
+        7: conclusion,
+        8: downloadResult,
     }
 
-    st.title('Clustering and Summarization App')
-    st.write('This app clusters and summarizes text from a CSV file.')
+    st.title('Multilingual Text Summarisation')
     
     pages[st.session_state.page_no](go_to_next_page)
 

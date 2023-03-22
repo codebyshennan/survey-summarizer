@@ -1,7 +1,11 @@
-from . import clean_2
-from . import cluster_4
-from . import download_6
-from . import embed_3
-from . import filter_1
-from . import summarise_5
-from . import upload_0
+from . import (
+    clean_3,
+    cluster_5,
+    conclusion_7,
+    download_8,
+    embed_4,
+    filter_2,
+    foreword_0,
+    summarise_6,
+    upload_1,
+)

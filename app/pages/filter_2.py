@@ -1,9 +1,11 @@
 import streamlit as st
-from app.helpers.translate import translate_sentence
+from helpers.translate import translate_sentence
+
 
 def filterDf(goto_next):
   
-  st.header('Step 2: Cluster and concatenate text')
+  st.header('Step 2: Filter by column and translate')
+  st.write("After selecting the specific column to filter by, the app will translate the sentences in that column and thereafter cluster them into groups. This step runs the Google Translate API and may take a while to complete.")
   
   df = st.session_state.df
   col = ['-'] + [col for col in df if not col.startswith('Unnamed')]
@@ -17,12 +19,14 @@ def filterDf(goto_next):
     total = len(df.index)
     
     translations = []
+    count = 0
     
     for sentence in df[selected_column]:
         translation = translate_sentence(sentence)
 
         translations.append(translation)
-        bar.progress(len(translations) * (100//total))
+        count += 1
+        bar.progress(count * (100//total))
         el.text(f"{len(translations)}/{total} completed")
       
     df['translated_sentence'] = translations
@@ -39,4 +43,4 @@ def filterDf(goto_next):
         goto_next()
 
       st.form_submit_button(label='Submit', on_click=next_page)
-          
+                    

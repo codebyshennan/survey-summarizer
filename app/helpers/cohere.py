@@ -36,3 +36,4 @@ class CohereSDK():
       temperature=0.3
     )
 
+co = CohereSDK()

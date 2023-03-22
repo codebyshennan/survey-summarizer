@@ -8,6 +8,10 @@ def gatherClusters(goto_next):
     n_clusters = st.session_state.n_clusters
     data = st.session_state.data
 
+    st.header('Step 5: Gather Clusters')
+    st.header(f"Number of clusters: {n_clusters}")
+    st.write("The following table shows the number of sentences in each cluster.")
+    
     with st.spinner('Gathering clusters...'):
         texts = []
         translated = []
